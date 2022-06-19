@@ -30,7 +30,7 @@
 
 - name: Install Git Credentials Manager
   shell: |
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/GitCredentialManager/git-credential-manager/main/src/linux/Packaging.Linux/install-from-source.sh)" "" -y
+    curl -s https://raw.githubusercontent.com/GitCredentialManager/git-credential-manager/main/src/linux/Packaging.Linux/install-from-source.sh | bash -s -- -y
     git-credential-manager-core configure
 
 - name: Set credentials store

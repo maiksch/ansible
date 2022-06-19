@@ -1,4 +1,0 @@
-#/bin/sh
-ansible-playbook -v --vault-password-file PASSWORD local.yml 
-
-#docker run --rm -v C:\Programming\workspaces\personal\ansible:/home/maik/ansible -it ansible bash

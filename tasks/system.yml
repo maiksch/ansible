@@ -1,0 +1,10 @@
+- name: Install stuff
+  become: true
+  dnf:
+    name: [git, openssl, which, wget]
+
+- name: Install window manager packages
+  become: true
+  dnf:
+    name:
+      [bspwm, sxhkd, xsetroot, polybar, feh, rofi, arandr, picom, xinput, sway]

@@ -1,0 +1,36 @@
+- name: Install dnf plugins
+  become: true
+  dnf: name=dnf-plugins-core
+
+# Install Brave Browser
+- name: Add brave repository to dnf
+  become: true
+  shell: |
+    dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+    rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+
+- name: Install Brave
+  become: true
+  dnf: name=brave-browser
+
+# Install Postman
+- name: Install Postman
+  become: true
+  shell:
+    chdir: /opt
+    cmd: |
+      sh -c 'curl -s https://dl.pstmn.io/download/latest/linux64 -o postman.tar.gz'
+      tar -xzf postman.tar.gz
+      rm postman.tar.gz
+      sh -c 'curl -s https://gist.githubusercontent.com/maiksch/4a9876f70f870b31fd0b07a875017c88/raw/357636695513f2faa36205e48e193e21958ad08a/postman.desktop -o /usr/share/applications/postman.desktop'
+
+# Install 1password
+- name: Add 1password repository to dnf
+  become: true
+  shell: |
+    sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
+    rpm --import https://downloads.1password.com/linux/keys/1password.asc
+
+- name: Install 1password
+  become: true
+  dnf: name=1password

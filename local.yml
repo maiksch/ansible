@@ -8,11 +8,10 @@
         name: "*"
         state: latest
   tasks:
-    - name: Setup ssh keys
-      include_tasks: tasks/ssh.yml
-    - name: Setup git config
-      include_tasks: tasks/git.yml
-    - name: install dotfiles
-      include_tasks: tasks/dotfiles.yml
-    - name: Install and configure the terminal
-      include_tasks: tasks/terminal.yml
+    - include_tasks: tasks/ssh.yml
+    - include_tasks: tasks/system.yml
+    - include_tasks: tasks/dotfiles.yml
+    - include_tasks: tasks/tools.yml
+    - include_tasks: tasks/git.yml
+    - include_tasks: tasks/terminal.yml
+    - include_tasks: tasks/programs.yml
