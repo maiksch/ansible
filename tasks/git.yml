@@ -1,9 +1,3 @@
-- name: Install git
-  become: true
-  dnf:
-    name: git
-    state: latest
-
 - name: Set personal email
   git_config:
     name: user.email

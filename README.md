@@ -5,5 +5,5 @@
 ## Installation
 
 ```bash
-    curl -s https://raw.githubusercontent.com/maiksch/ansible/main/install | sudo bash
+curl -s https://raw.githubusercontent.com/maiksch/ansible/main/install | sudo bash
 ```
