@@ -1,0 +1,17 @@
+- name: Install zsh
+  become: true
+  dnf:
+    name: [zsh, kitty, neovim, tmux]
+    state: latest
+
+- name: Change default shell
+  become: true
+  shell: chsh -s $(which zsh) maik
+
+- name: Install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
+
+- name: Install zsh-autosuggestions
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: ~/.oh-my-zsh/plugins/zsh-autosuggestions
