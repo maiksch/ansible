@@ -1,0 +1,21 @@
+- name: Ensure .ssh directory exists.
+  file:
+    dest: "~/.ssh"
+    mode: 0700
+    state: directory
+
+- name: Install ssh public keys
+  copy:
+    src: "{{ item }}"
+    dest: "~/.ssh/"
+    mode: 0644
+  with_fileglob:
+    - "ssh/*.pub"
+
+- name: Install ssh private keys
+  copy:
+    src: "{{ item }}"
+    dest: "~/.ssh/"
+    mode: 0600
+  with_fileglob:
+    - "ssh/*[!.pub]"

@@ -1,0 +1,6 @@
+#/bin/sh
+
+#docker build . -t ansible
+#docker run --name yeet --rm -v C:\Programming\workspaces\personal\ansible:/home/maik/ansible -it ansible bash
+
+ansible-playbook -v --vault-password-file PASSWORD local.yml 

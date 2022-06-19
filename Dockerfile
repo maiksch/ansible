@@ -11,7 +11,4 @@ RUN echo "maik ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/maik && \
     chmod 0440 /etc/sudoers.d/maik
 USER maik
 WORKDIR /home/maik
-
-FROM maiki
-COPY . .
 CMD ["sh", "-c", "ansible-playbook main.yml"]

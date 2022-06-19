@@ -1,0 +1,15 @@
+- hosts: localhost
+  # become: true
+  pre_tasks:
+    - name: Upgrade everything
+      become: true
+      dnf:
+        name: "*"
+        state: latest
+  tasks:
+    - name: Setup ssh keys
+      include_tasks: tasks/ssh.yml
+    # - name: Install and configure the terminal
+    #   include_tasks: tasks/terminal.yml
+    - name: Install dotfiles
+      include_tasks: tasks/dotfiles.yml
