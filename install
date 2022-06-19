@@ -1,13 +1,9 @@
 #/bin/sh
 
-if !command -v ansible-pull &> /dev/null; then
+if !command -v ansible-playbook &> /dev/null; then
     echo "Install ansible"
     sudo dnf install ansible -y
 fi
 
-if [[ $1 == "--local" ]]; then
-    ansible-playbook -v --vault-password-file PASSWORD --ask-become-pass local.yml
-    #docker run --rm -v C:\Programming\workspaces\personal\ansible:/home/maik/ansible -it ansible bash
-else
-    ansible-pull --ask-vault-pass --ask-become-pass -U https://github.com/maiksch/ansible
-fi
+ansible-playbook -v --ask-vault-pass --ask-become-pass local.yml
+#docker run --rm -v C:\Programming\workspaces\personal\ansible:/home/maik/ansible -it ansible bash
