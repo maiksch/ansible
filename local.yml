@@ -9,6 +9,8 @@
   tasks:
     - name: Setup ssh keys
       include_tasks: tasks/ssh.yml
+    - name: Setup git config
+      include_tasks: tasks/git.yml
     # - name: Install and configure the terminal
     #   include_tasks: tasks/terminal.yml
     - name: Install dotfiles

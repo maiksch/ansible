@@ -1,5 +1,5 @@
 - name: Clone dotfiles
-  ansible.builtin.git:
+  git:
     repo: https://github.com/maiksch/.dotfiles
     dest: ~/dotfiles
 
@@ -7,7 +7,7 @@
   become: true
   dnf:
     name: stow
-    state: present
+    state: latest
 
 - name: Create symlinks
-  shell: cd ~/dotfiles && sudo chmod +x ./install && ./install
+  shell: cd ~/dotfiles && sudo chmod 775 ./install && ./install
