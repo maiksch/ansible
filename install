@@ -1,8 +1,18 @@
 #/bin/sh
 
 if !command -v ansible-playbook &> /dev/null; then
-    echo "Install ansible"
+    echo "Installng ansible..."
     sudo dnf install ansible -y
+fi
+
+if !command -v git &> /dev/null; then
+    echo "Installing git..."
+    sudo dnf install git -y
+fi
+
+if [[ $1 != "--local" ]]; then
+    git clone https://github.com/maiksch/ansible.git
+    cd ansible
 fi
 
 ansible-playbook -v --ask-vault-pass --ask-become-pass local.yml
