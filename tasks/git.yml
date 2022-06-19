@@ -4,13 +4,13 @@
     name: git
     state: latest
 
-- name: Git personal setup email
+- name: Set personal email
   git_config:
     name: user.email
     scope: global
     value: "maik.schmaddebeck@icloud.com"
 
-- name: Git personal setup name
+- name: Set name
   git_config:
     name: user.name
     scope: global
@@ -21,9 +21,20 @@
     name: ~/work/
     state: directory
 
-- name: Git work overwrite email
+- name: Set work email
   git_config:
     name: user.email
     scope: file
     file: ~/work/.gitconfig
     value: "maik.schmaddebeck@point-gmbh.com"
+
+- name: Install Git Credentials Manager
+  shell: |
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/GitCredentialManager/git-credential-manager/main/src/linux/Packaging.Linux/install-from-source.sh)" "" -y
+    git-credential-manager-core configure
+
+- name: Set credentials store
+  git_config:
+    name: credential.credentialStore
+    scope: global
+    value: secretservice

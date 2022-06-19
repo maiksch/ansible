@@ -1,4 +1,6 @@
 - hosts: localhost
+  vars:
+    username: "{{ ansible_user_id }}"
   pre_tasks:
     - name: Upgrade everything
       become: true

@@ -6,7 +6,7 @@
 
 - name: Change default shell
   become: true
-  shell: chsh -s $(which zsh) maik
+  shell: "chsh -s $(which zsh) {{ username }}"
 
 - name: Install oh-my-zsh
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
