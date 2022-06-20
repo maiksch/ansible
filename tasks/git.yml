@@ -23,9 +23,12 @@
     value: "maik.schmaddebeck@point-gmbh.com"
 
 - name: Install Git Credentials Manager
-  shell: |
-    curl -s https://raw.githubusercontent.com/GitCredentialManager/git-credential-manager/main/src/linux/Packaging.Linux/install-from-source.sh | bash -s -- -y
-    git-credential-manager-core configure
+  shell:
+    chdir: ~/Downloads
+    chmd: |
+      curl -LO https://raw.githubusercontent.com/GitCredentialManager/git-credential-manager/main/src/linux/Packaging.Linux/install-from-source.sh
+      sh ./install-from-source.sh -y
+      git-credential-manager-core configure
 
 - name: Set credentials store
   git_config:

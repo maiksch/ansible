@@ -1,7 +1,7 @@
 - name: Install stuff
   become: true
   dnf:
-    name: [git, openssl, which, wget]
+    name: [git, openssl, which, wget, util-linux-user]
 
 - name: Install window manager packages
   become: true
