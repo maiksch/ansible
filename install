@@ -1,11 +1,11 @@
 #/bin/sh
 
-if !command -v ansible-playbook &> /dev/null; then
-    echo "Installng ansible..."
+if ! type ansible-playbook &> /dev/null; then
+    echo "Installing ansible..."
     sudo dnf install ansible -y
 fi
 
-if !command -v git &> /dev/null; then
+if ! type git &> /dev/null; then
     echo "Installing git..."
     sudo dnf install git -y
 fi
