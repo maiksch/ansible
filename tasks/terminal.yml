@@ -15,3 +15,8 @@
   git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: ~/.oh-my-zsh/plugins/zsh-autosuggestions
+
+- name: Install zsh theme
+  shell: |
+    mkdir -d ~/.oh-my-zsh/custom/themes
+    curl -s https://gist.githubusercontent.com/maiksch/163b89a5527cf8ef6427f121a1ef0223/raw/094219b395efcb4088551995435e33af7d4a8b57/maiksch.zsh-theme -o ~/.oh-my-zsh/custom/themes/maiksch.zsh-theme
