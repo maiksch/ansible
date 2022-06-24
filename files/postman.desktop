@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Postman
+Exec="/opt/Postman/Postman"
+Comment=Supercharge your API workflow
+Type=Application
+Categories=Development;
+Version=1.0
+Terminal=false
+Icon=/opt/Postman/app/resources/app/assets/icon.png

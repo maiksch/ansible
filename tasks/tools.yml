@@ -4,6 +4,10 @@
     name: [dotnet, dotnet-sdk-3.1]
     state: latest
 
+- name: Install golang
+  become: true
+  dnf: name=golang
+
 - name: Install volta
   shell: curl -s https://get.volta.sh | bash
 

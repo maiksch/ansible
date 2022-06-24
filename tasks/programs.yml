@@ -17,12 +17,11 @@
 - name: Install Postman
   become: true
   shell:
-    chdir: /opt
+    #chdir: /tmp
     cmd: |
-      sh -c 'curl -s https://dl.pstmn.io/download/latest/linux64 -o postman.tar.gz'
-      tar -xzf postman.tar.gz
-      rm postman.tar.gz
-      sh -c 'curl -s https://gist.githubusercontent.com/maiksch/4a9876f70f870b31fd0b07a875017c88/raw/357636695513f2faa36205e48e193e21958ad08a/postman.desktop -o /usr/share/applications/postman.desktop'
+      wget -O /tmp/postman.tar.gz https://dl.pstmn.io/download/latest/linux64
+      tar -xz -f /tmp/postman.tar.gz --directory /opt
+      cp files/postman.desktop /usr/local/share/applications/
 
 # Install 1password
 - name: Add 1password repository to dnf
@@ -34,3 +33,8 @@
 - name: Install 1password
   become: true
   dnf: name=1password
+
+# Install Thunderbird
+- name: Install Thunderbird
+  become: true
+  dnf: name=thunderbird
