@@ -1,12 +1,7 @@
-- name: Install stuff
-  become: true
-  dnf:
-    name: [git, openssl, which, util-linux-user]
-
 - name: Install utils
   become: true
   dnf:
-    name: [ripgrep, wget, xclip]
+    name: [git, openssl, which, util-linux-user, ripgrep, wget, xclip, brightnessctl, nss-tools]
 
 - name: Install window manager packages
   become: true
