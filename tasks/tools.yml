@@ -1,12 +1,8 @@
-- name: Install dotnet
+- name: Install languages
   become: true
   dnf:
-    name: [dotnet, dotnet-sdk-3.1]
+    name: [dotnet, dotnet-sdk-3.1, golang, elixir, erlang]
     state: latest
-
-- name: Install golang
-  become: true
-  dnf: name=golang
 
 - name: Install volta
   shell: curl -s https://get.volta.sh | bash
@@ -22,3 +18,8 @@
     global: yes
   environment:
     PATH: "$PATH:/home/{{ username }}/.volta/bin"
+
+- name: Install hex and pheonix (for elixir)
+  shell: |
+    echo "Y" | mix local.hex
+    echo "Y" | mix archive.install hex phx_new

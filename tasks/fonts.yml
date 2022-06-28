@@ -4,7 +4,7 @@
     chdir: /tmp 
     cmd: |
       wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
-      mkdir /usr/share/fonts/jetbrains-mono-nerd
+      mkdir -p /usr/share/fonts/jetbrains-mono-nerd
       unzip JetBrainsMono.zip -d /usr/share/fonts/jetbrains-mono-nerd
 
 - name: Update fonts cache

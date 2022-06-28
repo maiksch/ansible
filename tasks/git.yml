@@ -3,17 +3,20 @@
     name: user.email
     scope: global
     value: "maik.schmaddebeck@icloud.com"
+  tags: [git]
 
 - name: Set name
   git_config:
     name: user.name
     scope: global
     value: "Maik Schmaddebeck"
+  tags: [git]
 
 - name: Ensure work folder exists
   file:
     name: ~/work/
     state: directory
+  tags: [git]
 
 - name: Set work email
   git_config:
@@ -21,17 +24,28 @@
     scope: file
     file: ~/work/.gitconfig
     value: "maik.schmaddebeck@point-gmbh.com"
+  tags: [git]
+
+- name: Use conditional work config
+  git_config:
+    name: "includeif.gitdir:~/work/.path"
+    scope: global
+    value: "~/work/.gitconfig"
+  tags: [git]
 
 - name: Install Git Credentials Manager
+  become: true
   shell:
-    chdir: ~/Downloads
+    chdir: /tmp
     cmd: |
       curl -LO https://raw.githubusercontent.com/GitCredentialManager/git-credential-manager/main/src/linux/Packaging.Linux/install-from-source.sh
       sh ./install-from-source.sh -y
       git-credential-manager-core configure
+  tags: [git]
 
 - name: Set credentials store
   git_config:
     name: credential.credentialStore
     scope: global
     value: secretservice
+  tags: [git]
