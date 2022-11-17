@@ -8,3 +8,5 @@
   dnf:
     name:
       [bspwm, sxhkd, xsetroot, polybar, feh, rofi, arandr, picom, xinput, network-manager-applet]
+  tags:
+    - wm   
