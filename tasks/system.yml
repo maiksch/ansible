@@ -1,7 +1,7 @@
 - name: Install utils
   become: true
   dnf:
-    name: [git, openssl, which, util-linux-user, ripgrep, wget, xclip, brightnessctl, nss-tools, g++, inotify-tools]
+    name: [git, openssl, which, util-linux-user, ripgrep, wget, xclip, brightnessctl, nss-tools, g++, inotify-tools, bat]
 
 - name: Install window manager packages
   become: true
