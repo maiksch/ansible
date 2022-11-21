@@ -15,5 +15,5 @@ if [[ $1 != "--local" ]]; then
     cd ansible
 fi
 
-ansible-playbook -v --ask-vault-pass --ask-become-pass local.yml
+ansible-playbook -v --ask-vault-pass --ask-become-pass local.yml --skip-tags=[wm]
 #docker run --rm -v C:\Programming\workspaces\personal\ansible:/home/maik/ansible -it ansible bash
